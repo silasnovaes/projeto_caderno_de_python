@@ -1,0 +1,44 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<div class="container mt-4">
+    <h1 class="mb-4">Nossa Equipe</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Silas Novaes De Luna Gomes</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Desenvolvedor 1</h6>
+                    <img src="{{ url_for('static', filename='img/silas.png' ) }}" class="card-img-top" alt="Sua foto">
+                    <p class="card-text">Sou aluno do curso de Sistemas para Internet e estamos desenvolvendo alguns projetos para fixar conhecimentos de Python e desenvolvimento Web.</p>
+                    <hr>
+                    <a href="https://github.com/silasnovaes" target="_blank" class="card-link">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/silasnovaes/" target="_blank" class="card-link">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Daniel Nogueira da Silva Júnior</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Desenvolvedor 2</h6>
+                    <img src="{{ url_for('static', filename='img/daniel.png' ) }}" class="card-img-top" alt="Sua foto">
+                    <p class="card-text">Aluno do curso de Sistemas para Internet, membro do grupo de desenvolvimento desse projeto, focado em aprendizados de python e usos de inteligência artificial.</p>
+                    <hr>
+                    <a href="https://github.com/DanielNogueirajr" target="_blank" class="card-link">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/daniel-nogueira-115a9b205/" target="_blank" class="card-link">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

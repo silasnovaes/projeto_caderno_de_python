@@ -1,0 +1,156 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<div class="container mt-4">
+    <h1 class="mb-4">Vetores e Matrizes em Python</h1>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>O que são Vetores e Matrizes?</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                Em Python, vetores são geralmente implementados como listas unidimensionais, enquanto matrizes são representadas como listas de listas (listas bidimensionais). Essas estruturas de dados são fundamentais para armazenar e manipular coleções de elementos.
+            </p>
+            <p class="card-text">
+                Embora Python não tenha tipos nativos específicos chamados "vetor" ou "matriz", podemos usar:
+            </p>
+            <ul>
+                <li><strong>Listas</strong>: Para implementar vetores e matrizes de forma nativa</li>
+                <li><strong>NumPy</strong>: Uma biblioteca externa que fornece arrays e matrizes otimizados para computação científica</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Aplicações</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                Vetores e matrizes são amplamente utilizados em:
+            </p>
+            <ul>
+                <li>Processamento de dados científicos</li>
+                <li>Manipulação de imagens (matrizes de pixels)</li>
+                <li>Sistemas de equações lineares</li>
+                <li>Jogos (coordenadas, mapas)</li>
+                <li>Análise estatística</li>
+                <li>Inteligência artificial e aprendizado de máquina</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Exemplos de Código</h2>
+        </div>
+        <div class="card-body">
+            <h3>Vetores (Listas Unidimensionais)</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Criando um vetor (lista)
+numeros = [10, 20, 30, 40, 50]
+
+# Acessando elementos (índices começam em 0)
+primeiro_elemento = numeros[0]  # 10
+terceiro_elemento = numeros[2]  # 30
+
+# Modificando elementos
+numeros[1] = 25  # Agora a lista é [10, 25, 30, 40, 50]
+
+# Tamanho do vetor
+tamanho = len(numeros)  # 5
+
+# Iterando sobre um vetor
+for numero in numeros:
+    print(numero)
+
+# Adicionando elementos
+numeros.append(60)  # Adiciona ao final: [10, 25, 30, 40, 50, 60]
+numeros.insert(1, 15)  # Insere na posição 1: [10, 15, 25, 30, 40, 50, 60]
+
+# Removendo elementos
+numeros.remove(30)  # Remove o valor 30: [10, 15, 25, 40, 50, 60]
+valor_removido = numeros.pop(2)  # Remove e retorna o elemento no índice 2 (25)
+            </code></pre>
+
+            <h3 class="mt-4">Matrizes (Listas Bidimensionais)</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Criando uma matriz 3x3
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Acessando elementos (linha, coluna)
+elemento = matriz[1][2]  # Linha 1, Coluna 2: valor 6
+
+# Modificando elementos
+matriz[0][1] = 10  # Modifica o elemento na linha 0, coluna 1
+
+# Iterando sobre uma matriz
+for linha in matriz:
+    for elemento in linha:
+        print(elemento, end=" ")
+    print()  # Nova linha após cada linha da matriz
+
+# Criando uma matriz dinamicamente
+linhas = 3
+colunas = 4
+matriz_zeros = [[0 for j in range(colunas)] for i in range(linhas)]
+# Resultado: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+            </code></pre>
+
+            <h3 class="mt-4">Operações com Vetores</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Soma de todos os elementos
+numeros = [1, 2, 3, 4, 5]
+soma = sum(numeros)  # 15
+
+# Encontrando o maior e o menor valor
+maior = max(numeros)  # 5
+menor = min(numeros)  # 1
+
+# Ordenando um vetor
+numeros_desordenados = [3, 1, 4, 1, 5, 9, 2]
+numeros_desordenados.sort()  # [1, 1, 2, 3, 4, 5, 9]
+numeros_decrescente = sorted(numeros_desordenados, reverse=True)  # [9, 5, 4, 3, 2, 1, 1]
+
+# Filtrando elementos (usando list comprehension)
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+pares = [n for n in numeros if n % 2 == 0]  # [2, 4, 6, 8, 10]
+            </code></pre>
+
+            <h3 class="mt-4">Usando NumPy para Vetores e Matrizes</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# É necessário instalar: pip install numpy
+import numpy as np
+
+# Criando arrays NumPy
+vetor = np.array([1, 2, 3, 4, 5])
+matriz = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Criando arrays especiais
+zeros = np.zeros((3, 3))  # Matriz 3x3 de zeros
+uns = np.ones((2, 4))     # Matriz 2x4 de uns
+identidade = np.eye(3)    # Matriz identidade 3x3
+
+# Operações matemáticas (muito mais eficientes que listas)
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+soma = a + b          # [5, 7, 9]
+produto = a * b       # [4, 10, 18] (multiplicação elemento a elemento)
+produto_escalar = np.dot(a, b)  # 32 (1*4 + 2*5 + 3*6)
+
+# Operações com matrizes
+m1 = np.array([[1, 2], [3, 4]])
+m2 = np.array([[5, 6], [7, 8]])
+
+soma_matrizes = m1 + m2
+produto_matrizes = np.matmul(m1, m2)  # ou m1 @ m2 (multiplicação de matrizes)
+            </code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
