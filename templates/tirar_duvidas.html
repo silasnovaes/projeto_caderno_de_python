@@ -1,0 +1,49 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<div class="container mt-4">
+    <h1>Tirar Dúvidas sobre Python</h1>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Pergunte ao Gemini</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                Tem alguma dúvida sobre programação em Python? Pergunte ao Gemini e receba uma resposta gerada por inteligência artificial.
+            </p>
+            
+            <form action="{{ url_for('responder_duvida') }}" method="post">
+                <div class="mb-3">
+                    <label for="pergunta" class="form-label">Sua pergunta:</label>
+                    <textarea class="form-control" id="pergunta" name="pergunta" rows="3" placeholder="Ex: Como funciona list comprehension em Python?" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Pergunta</button>
+            </form>
+        </div>
+    </div>
+    
+    {% if pergunta %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Sua Pergunta</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ pergunta }}</p>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if resposta %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Resposta</h2>
+        </div>
+        <div class="card-body">
+            <div class="resposta-gemini">
+                {{ resposta|safe }}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

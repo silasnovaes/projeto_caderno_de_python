@@ -1,0 +1,201 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<div class="container mt-4">
+    <h1 class="mb-4">Funções e Procedimentos em Python</h1>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>O que são Funções e Procedimentos?</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                Em Python, funções são blocos de código reutilizáveis que realizam uma tarefa específica. Elas ajudam a organizar o código, evitar repetição e melhorar a legibilidade.
+            </p>
+            <p class="card-text">
+                Embora algumas linguagens diferenciem entre funções (que retornam valores) e procedimentos (que não retornam valores), Python trata tudo como funções. Uma função sem instrução <code>return</code> ou com <code>return</code> sem valor retorna implicitamente <code>None</code>.
+            </p>
+            <p class="card-text">
+                As funções em Python são definidas usando a palavra-chave <code>def</code>, seguida pelo nome da função e parâmetros entre parênteses.
+            </p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Aplicações</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                Funções são fundamentais na programação e são usadas para:
+            </p>
+            <ul>
+                <li>Dividir programas complexos em partes menores e mais gerenciáveis</li>
+                <li>Reutilizar código em diferentes partes do programa</li>
+                <li>Encapsular lógica e ocultar detalhes de implementação</li>
+                <li>Facilitar testes e depuração</li>
+                <li>Melhorar a legibilidade e manutenção do código</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Exemplos de Código</h2>
+        </div>
+        <div class="card-body">
+            <h3>Função Simples</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Definindo uma função simples
+def saudacao():
+    print("Olá, mundo!")
+
+# Chamando a função
+saudacao()  # Saída: Olá, mundo!
+            </code></pre>
+
+            <h3 class="mt-4">Função com Parâmetros</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função com parâmetros
+def saudar_pessoa(nome):
+    print(f"Olá, {nome}!")
+
+# Chamando a função com um argumento
+saudar_pessoa("Maria")  # Saída: Olá, Maria!
+            </code></pre>
+
+            <h3 class="mt-4">Função com Retorno</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função que retorna um valor
+def somar(a, b):
+    return a + b
+
+# Usando o valor retornado
+resultado = somar(5, 3)
+print(resultado)  # Saída: 8
+            </code></pre>
+
+            <h3 class="mt-4">Parâmetros Padrão</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função com parâmetros padrão
+def potencia(base, expoente=2):
+    return base ** expoente
+
+# Chamadas da função
+quadrado = potencia(5)      # Usa o expoente padrão 2, resultado: 25
+cubo = potencia(5, 3)       # Especifica o expoente 3, resultado: 125
+            </code></pre>
+
+            <h3 class="mt-4">Argumentos Nomeados</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função com múltiplos parâmetros
+def exibir_info(nome, idade, cidade):
+    print(f"Nome: {nome}, Idade: {idade}, Cidade: {cidade}")
+
+# Chamando com argumentos nomeados
+exibir_info(nome="Carlos", idade=30, cidade="São Paulo")
+exibir_info(cidade="Rio de Janeiro", nome="Ana", idade=25)  # A ordem não importa
+            </code></pre>
+
+            <h3 class="mt-4">Número Variável de Argumentos</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função com número variável de argumentos posicionais
+def soma_todos(*numeros):
+    return sum(numeros)
+
+# Chamadas da função
+print(soma_todos(1, 2))          # 3
+print(soma_todos(1, 2, 3, 4, 5)) # 15
+
+# Função com número variável de argumentos nomeados
+def exibir_pessoa(nome, **caracteristicas):
+    print(f"Nome: {nome}")
+    for chave, valor in caracteristicas.items():
+        print(f"{chave}: {valor}")
+
+# Chamada da função
+exibir_pessoa("João", idade=30, profissao="Engenheiro", cidade="Brasília")
+            </code></pre>
+
+            <h3 class="mt-4">Funções Lambda (Anônimas)</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função lambda para calcular o quadrado
+quadrado = lambda x: x ** 2
+print(quadrado(5))  # 25
+
+# Usando lambda com funções de ordem superior
+numeros = [1, 5, 4, 3, 2]
+numeros_ordenados = sorted(numeros)  # [1, 2, 3, 4, 5]
+numeros_quadrados = list(map(lambda x: x**2, numeros))  # [1, 25, 16, 9, 4]
+numeros_pares = list(filter(lambda x: x % 2 == 0, numeros))  # [4, 2]
+            </code></pre>
+
+            <h3 class="mt-4">Escopo de Variáveis</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Variáveis globais e locais
+x = 10  # Variável global
+
+def funcao():
+    y = 5  # Variável local
+    print(x)  # Acessa a variável global
+    print(y)  # Acessa a variável local
+
+funcao()
+print(x)  # Funciona: x é global
+# print(y)  # Erro: y não está definido no escopo global
+
+# Modificando variáveis globais
+def modificar_global():
+    global x
+    x = 20  # Modifica a variável global
+
+print(x)  # 10
+modificar_global()
+print(x)  # 20
+            </code></pre>
+
+            <h3 class="mt-4">Funções como Objetos de Primeira Classe</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Funções podem ser atribuídas a variáveis
+def saudacao(nome):
+    return f"Olá, {nome}!"
+
+minha_funcao = saudacao
+print(minha_funcao("Pedro"))  # Olá, Pedro!
+
+# Funções podem ser passadas como argumentos
+def aplicar_funcao(f, valor):
+    return f(valor)
+
+def dobrar(x):
+    return x * 2
+
+resultado = aplicar_funcao(dobrar, 5)  # 10
+            </code></pre>
+
+            <h3 class="mt-4">Funções Recursivas</h3>
+            <pre class="bg-dark text-light p-3 rounded"><code>
+# Função recursiva para calcular o fatorial
+def fatorial(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * fatorial(n - 1)
+
+print(fatorial(5))  # 120 (5 * 4 * 3 * 2 * 1)
+
+# Função recursiva para sequência de Fibonacci
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+for i in range(10):
+    print(fibonacci(i), end=" ")  # 0 1 1 2 3 5 8 13 21 34
+            </code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
